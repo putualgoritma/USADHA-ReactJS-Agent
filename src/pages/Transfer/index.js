@@ -146,7 +146,10 @@ function Transfer  () {
                       setLoading(true)
                       API.transfer(form, TOKEN).then((result) => {
                             // window.location.reload();
-                            history.push(`landing/tansfer sukses/transfer`)
+                            // history.push(`landing/tansfer sukses/transfer`)
+                            alert('Transfer Berhasil')
+                            history.push("/");
+                            window.location.reload()
                       }).catch((e) => {
                             console.log(e.request);
                             alert('transfer gagal')

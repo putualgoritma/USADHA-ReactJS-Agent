@@ -100,10 +100,11 @@ function Withdraw  () {
                                   bank_name : null,
                                   bank_acc_no : null
                             });
-                            // alert(result.message)
-                            // window.location.reload();
+                            alert(result.message)
+                            history.push("/");
+                            window.location.reload()
                             // history.push(`landing/${result.message}/withdraw`)
-                             history.goBack(`landing/${result.message}/withdraw`)
+                            //  history.goBack(`landing/${result.message}/withdraw`)
                       }).catch((e) => {
                             console.log(e.request)
                             alert('withdraw gagal')
