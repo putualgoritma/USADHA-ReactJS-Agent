@@ -95,13 +95,14 @@ function HistoryOrderDetailIn() {
       const [HISTORY, setHISTORY] = useState(null);
       const [TOKEN, setTOKEN] = useState(null);
       const [loading, setLoading ] = useState(true);
+      const historys =  JSON.parse(sessionStorage.getItem('HISTORY'));
       useEffect( () => {
             let isAmounted = false
             if(!isAmounted) { 
                   Promise.all([getTOKEN(),getHistory()]).then((res) => {
                         let tokenData = res[0]
                         let historyData = res[1]
-                        // console.log(tokenData)
+                        console.log('data history',res)
                         if(tokenData !==null && historyData !== null ){
                                     setLoading(false)
                         }else{
@@ -132,10 +133,11 @@ function HistoryOrderDetailIn() {
           setLoading(true)
           API.deliveryproses(HISTORY.id, TOKEN).then((result) => {
             // console.log(result);
+            alert('Orderan di Proses');
             history.push('/HistoryIn')
         }).catch((e) => {
-                console.log(e.request);
-                alert('pesanan gagal di proses')
+                // console.log(JSON.parse(e.request.responseText).message);
+                alert(JSON.parse(e.request.responseText).message);
                 setLoading(false)
         })
       }
@@ -151,13 +153,15 @@ function HistoryOrderDetailIn() {
             }
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
+        alert('Orderan di Kirim');
         history.push('/HistoryIn')
         setLoading(false)
       }, (err) => {
         alert('pesanan gagal di kirim');
         setLoading(false)
       })
+
     //     API.deliveryupdate(HISTORY.id, TOKEN).then((result) => {
     //       // console.log(result);
     //       history.push('/HistoryIn')
@@ -265,6 +269,14 @@ function HistoryOrderDetailIn() {
                                     </div>
                                 </div>
                             }
+
+                                {/* <div className ="login">
+                                    <div className="mb-3"> 
+                                        <button  className="button1"  onClick={() => console.log('data history',HISTORY.id)}>
+                                                TEST CONSOLE
+                                        </button>
+                                    </div>
+                                </div> */}
                            
                     </div>
                 </div>
