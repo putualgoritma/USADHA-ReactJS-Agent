@@ -85,10 +85,17 @@ function Profile() {
                         
                         if(form.id !== null && form.name !=='' && form.email !=='' && form.address !=='' && form.phone !==''){
                               setLoading(true)
+                              form.lat = USER.lat;
+                              form.lng = USER.lng;
+                              form.province_id = USER.province_id;
+                              form.city_id = USER.city_id;
                               API.updateProfile(form, TOKEN).then((result) => {
                                     setUSERSession(result.data)
                                     // window.location.reload();
-                                    history.push(`/landing/profile sukses update/profile`)
+                                    // history.push(`/landing/profile sukses update/profile`)
+                                    alert('update profile sukses')
+                                    history.push("/");
+                                    window.location.reload()
                               }).catch((e) => {
                                     alert('profile tidak bisa di update')
                                     setLoading(false)
@@ -122,17 +129,17 @@ function Profile() {
                                           <img src={USER.img !==null ?`${process.env.REACT_APP_BASE_URL}${USER.img.replace('public/', '')}` : ImageDetail1}   alt='foto-agent' /><br/>
                                           {/* <button className='btn-pilih-gambar' style={{color:'white'}}  >Pilih Gambar</button> */}
 
-                                          <div className="login">
+                                          {/* <div className="login">
                                                 <div className="mb-3">
                                                       <button  className="button1" type="button">Pilih Gambar</button>
                                                 </div>     
-                                          </div>
+                                          </div> */}
                                           {/* <input id='input-image' type='file' onChange={(value) => setProfile(value.target.files[0])}></input> */}
                                           <h4 className='text-left mb-2'>Link Riferal</h4>
                                           <a href={USER.ref_link}>{USER.ref_link}</a>
                                           <p></p>
                                           <div style={{display:'flex', alignItems:'center ', justifyContent:'center'}}>
-                                                <span style={{flex:1}}>
+                                          <span style={{flex:1,cursor:'pointer'}} onClick={() => {navigator.clipboard.writeText(USER.ref_link)}}>
                                                       <img src={Copy} alt='gambar' style={{width:20, height:20}} />
                                                       <p>Copy</p>
                                                 </span>
@@ -197,6 +204,9 @@ function Profile() {
                                                       <div className="mb-3">
                                                             <button  onClick={() => {if(window.confirm('Update Profile  ?')){handleProfile()};}}  className="button1" type="button">Update Biodata</button>
                                                       </div>     
+                                                       {/* <div className="mb-3">
+                                                            <button  onClick={() =>console.log('data form',USER)}  className="button1" type="button">Test Console</button>
+                                                      </div>      */}
                                                 </div>
                                           </div>
                                     </div>

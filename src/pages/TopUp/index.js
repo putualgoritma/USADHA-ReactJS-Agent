@@ -100,9 +100,9 @@ function TopUp  () {
                       });
                       
                     //   history.push(`landing/${result.message}/topup`)
-                      history.goBack(`landing/${result.message}/topup`)
-                      
-                      alert(result.message)
+                    history.push("/");
+                    window.location.reload()
+                    alert(result.message)
                     
                      
                 

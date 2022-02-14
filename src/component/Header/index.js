@@ -52,18 +52,18 @@ const ItemSideBar = (props) => {
               <span className="links_name">Withdraw</span>
             </a>
           </li>
-          <li>
+          {/* <li>
             <a href="/RegisterDownline">
               <i className="bx bxs-registered" />
               <span className="links_name">Register Downline</span>
             </a>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <a href="/Downline">
               <i className="bx bxs-chevron-down-square" />
               <span className="links_name">Mitra Langsung</span>
             </a>
-          </li>
+          </li> */}
           <li>
             <a href="/InfoBank">
               <i className="bx bxs-bank" />
@@ -435,7 +435,7 @@ const Header = (props)=>{
                                                 <div className="mycart mini-cart">
                                                     <div className="block-minicart">
                                                         <div className="tongle">
-                                                        <a href='./Cart'>
+                                                        <a href='/Cart'>
                                                             <i className="fa fa-shopping-cart"/>
                                                             <div className="summary">
                                                                 <span className="amount">

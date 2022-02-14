@@ -50,9 +50,10 @@ const Login = ()=>{
                               id_onesignal:null
                         })
                         setLoading(false)
-                        history.push("/");
+                        // history.push("/");
                         // history.goBack("/");
-                        
+                        history.push("/");
+                        window.location.reload()
                   }).catch((e) => {
                         console.log(e.request);
                         alert('login gagal')
